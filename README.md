@@ -1,15 +1,15 @@
 # Project Title
 
-This is an HTML5 Canvas where you can paint, based on the 30 days Javascript challenge.
+This is an exercise where you can select multiple elements holding shift, based on the 30 days Javascript challenge.
 
 ## Getting Started
 
-Click your mouse and move it to enjoy a colorful experience =).
+Hold shift and select as many elements as you want.
 
 ## Demo
 
-## [HTML5 Canvas](https://danielgarciaguillen.github.io/html5canvas/)
-![HTML5 Canvas](/image/html5canvas.jpg?raw=true "CssClock")
+## [Hold Shift](https://danielgarciaguillen.github.io/holdshift/)
+![Hold Shift](/image/holdshift.jpg?raw=true "HoldShift")
 
 
 ## Learnings
@@ -20,15 +20,30 @@ Click your mouse and move it to enjoy a colorful experience =).
 const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]')
 checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
 ```
-* How to not draw while moving mouse with:
-`let isDrawing = false`
-
-* How to stablish an starting point when drawing:
+* How to create a logic where we loop between the first element selected and the last one while holding shift:
 ```
-let lastX = 0;
-let lastY = 0;
+let lastChecked;
+function handleCheck(e) {
+  // Check if they had the shift key down
+  // AND check that they are checking it
+  let inBetween = false;
+  if (e.shiftKey && this.checked) {
+    // go ahead and do what we please
+    // loop over every single checkbox
+    checkboxes.forEach(checkbox => {
+      console.log(checkbox);
+      if (checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween;
+        console.log('STarting to check them inbetween!');
+      }
+      if (inBetween) {
+        checkbox.checked = true;
+      }
+    });
+  }
+  lastChecked = this;
+}
 ```
-* Update last position with `[lastX , lastY] =[e.offsetX, e.offsetY];`
 
 ## Built With
 

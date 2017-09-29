@@ -14,13 +14,13 @@ Hold shift and select as many elements as you want.
 
 ## Learnings
 
-* How to add select class inside another class and add event listener with:
+* How to select class inside another class and add event listener with:
 
 ```
 const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]')
 checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
 ```
-* How to create a logic where we loop between the first element selected and the last one while holding shift:
+* How to create logic where loop between the first element selected and the last one while holding shift:
 ```
 let lastChecked;
 function handleCheck(e) {
